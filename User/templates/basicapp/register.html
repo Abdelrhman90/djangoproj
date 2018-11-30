@@ -1,0 +1,16 @@
+{% extends 'basicapp/base.html' %}
+{% load staticfiles %}
+{% block body_block %}
+
+  {% if registered %}
+    <h1>Thank You For Registering To Our Website</h1>
+  {% else %}
+    <h1>Fill Out The Forms:</h1>
+    <form enctype="multipart/form-data" method="post">
+      {% csrf_token %}
+      {{ userform.as_p }}
+      {{ profileform.as_p }}
+      <input type="submit" name="" value="Register">
+    </form>
+  {% endif %}
+{% endblock %}
